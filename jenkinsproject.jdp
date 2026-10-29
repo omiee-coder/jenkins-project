@@ -1,0 +1,26 @@
+pipeline { 
+    agent any
+        stages { 
+            stage('PULL') {
+                steps { 
+                   git branch: 'main', url: 'https://github.com/omiee-coder/jenkins-project.git'
+                    echo 'Pull Success'
+                }
+            }
+            stage('BUILD') {
+                steps { 
+                    echo 'Build Sucess'
+                }
+            }
+            stage('TEST') {
+                steps { 
+                    echo 'Test Success'
+                }
+            }
+            stage('DEPLOY') {
+                steps { 
+                    echo 'Deploy Success'
+                }
+            }
+        }
+    }
