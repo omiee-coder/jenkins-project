@@ -1,27 +1,34 @@
-pipeline { 
+
+pipeline {
     agent any
-        stages { 
-            stage('PULL') {
-                steps { 
-                   git branch: 'main', url: 'https://github.com/omiee-coder/jenkins-project.git'
-                    echo 'Pull Success'
-                }
+
+    stages {
+        stage('PULL') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/omiee-coder/jenkins-project.git'
+                echo 'Pull Success'
             }
-            stage('BUILD') {
-                steps { 
-                     mvn clean package -DskipTests
-                    echo 'Build Sucess'
-                }
+        }
+
+        stage('BUILD') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+                echo 'Build Success'
             }
-            stage('TEST') {
-                steps { 
-                    echo 'Test Success'
-                }
+        }
+
+        stage('TEST') {
+            steps {
+                sh 'mvn test'
+                echo 'Test Success'
             }
-            stage('DEPLOY') {
-                steps { 
-                    echo 'Deploy Success'
-                }
+        }
+
+        stage('DEPLOY') {
+            steps {
+                echo 'Deploy Success'
             }
         }
     }
+}
