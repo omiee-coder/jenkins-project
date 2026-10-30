@@ -5,22 +5,24 @@ pipeline {
     stages {
         stage('PULL') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/omiee-coder/jenkins-project.git'
-                echo 'Pull Success'
+                echo 'GitHub Checkout Success'
             }
         }
 
         stage('BUILD') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                dir('backend') {
+                    sh 'mvn clean package -DskipTests'
+                }
                 echo 'Build Success'
             }
         }
 
         stage('TEST') {
             steps {
-                sh 'mvn test'
+                dir('backend') {
+                    sh 'mvn test'
+                }
                 echo 'Test Success'
             }
         }
