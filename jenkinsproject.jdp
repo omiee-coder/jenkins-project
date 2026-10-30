@@ -9,6 +9,7 @@ pipeline {
             }
             stage('BUILD') {
                 steps { 
+                     mvn clean package -DskipTests
                     echo 'Build Sucess'
                 }
             }
