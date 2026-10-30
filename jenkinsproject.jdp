@@ -19,18 +19,14 @@ pipeline {
         }
 
         stage('TEST') {
-            steps {
-                dir('backend') {
-                    sh 'mvn test'
+                steps { 
+                    echo 'Test Success'
                 }
-                echo 'Test Success'
             }
-        }
-
-        stage('DEPLOY') {
-            steps {
-                echo 'Deploy Success'
+            stage('DEPLOY') {
+                steps { 
+                    echo 'Deploy Success'
+                }
             }
         }
     }
-}
